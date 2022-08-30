@@ -43,8 +43,22 @@
 <section>
   <article *ngFor="let item of elementoGuardado">
     <img [src]="item.imagen" height="150" width="150">
-    <h2>{{item.nombre}}</h2>
-    <p>{{item.detalle}}</p>
+
+    <h2 *ngIf="item.nombre; then aquiIf; else aquiElse"></h2>
+    <ng-template #aquiIf>
+      <h2>{{item.nombre}}</h2>
+    </ng-template>
+    <ng-template #aquiElse>
+      <h2>Sin Nombre</h2>
+    </ng-template>
+    <p *ngIf="item.detalle; then ifDetalle; else elseDetalle"></p>
+    <ng-template #ifDetalle>
+      <p>{{ item.detalle }}</p>
+    </ng-template>
+    <ng-template #elseDetalle>
+      <p>{{Sin detalle}}</p>
+
+    </ng-template>
 
   </article>
 </section>

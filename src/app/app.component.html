@@ -1,0 +1,51 @@
+<app-mostrar-imangen [imagen]="imagen"></app-mostrar-imangen>
+<!--[variable del mostrar componetente]   y imagen1 es de app.components     -->
+<app-mostrar-imangen [imagen]="imagen1"></app-mostrar-imangen>
+<app-mostrar-imangen [imagen]="imagen2"></app-mostrar-imangen>
+<app-mostrar-imangen [imagen]="imagen3"> </app-mostrar-imangen>
+
+
+<section>
+  <fieldset>
+    <label for="">Nombre de la imagen</label>
+    <input type="text" name="nombre" [value]="nuevoHistorial.nombre" ç
+    (input)="cambiarNombre($event)">
+    <p>{{nuevoHistorial.nombre}}</p>
+  </fieldset>
+
+  <fieldset>
+    <label for="">Detalle de la imagen</label>
+    <textarea name="detalle"
+              [value]="nuevoHistorial.detalle"
+              (input)="cambiarDetalle($event)"
+              cols="30"
+              rows="10">
+    </textarea>
+    <p>{{nuevoHistorial.detalle}}</p>
+  </fieldset>
+
+  <fieldset>
+    <label for="">URL de la imagen</label>
+    <input type="url" name="imagen" [value]="nuevoHistorial.imagen"
+    (input)="cambiarImagen($event)">
+    {{nuevoHistorial.imagen}}
+  </fieldset>
+  <fieldset>
+    <button type="button" role="button" (click)="guardarHistorial()"
+    >Enviar</button>
+  </fieldset>
+
+
+  <app-mostrar-imangen [imagen]="nuevoHistorial.imagen"> </app-mostrar-imangen>
+
+</section>
+
+<section>
+  <article *ngFor="let item of elementoGuardado">
+    <img [src]="item.imagen" height="150" width="150">
+    <h2>{{item.nombre}}</h2>
+    <p>{{item.detalle}}</p>
+
+  </article>
+</section>
+{{elementoGuardado.length}}
